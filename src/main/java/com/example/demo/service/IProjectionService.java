@@ -7,7 +7,8 @@ import com.example.demo.dto.ProjectionDTO;
 
 public interface IProjectionService {
 
-	ProjectionDTO addProjection(ProjectionDTO filmDTO);
+	ProjectionDTO saveProjection(ProjectionDTO projectionDTO);
+
 	ProjectionDTO findById (Long id);
     void deleteById (Long id);
     List<ProjectionDTO> findAll();

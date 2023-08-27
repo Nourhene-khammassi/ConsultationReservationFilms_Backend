@@ -27,6 +27,7 @@ public class Projection {
 	private  Long idProjection ;
 	private Date dateProjection; 
 	private String tarifProjection ;
+	private String timeProjection;
 
 	
 	 @ManyToOne

@@ -7,23 +7,36 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.FilmDTO;
 import com.example.demo.dto.ProjectionDTO;
 import com.example.demo.dto.SalleDTO;
+import com.example.demo.entity.Film;
 import com.example.demo.entity.Projection;
 import com.example.demo.entity.Salle;
+import com.example.demo.repository.FilmRepository;
 import com.example.demo.repository.ProjectionRepository;
 import com.example.demo.repository.SalleRepository;
 @Service
 public class ProjectionServiceImplementation  implements IProjectionService{
-	@Autowired
-	private ProjectionRepository repository;
-    @Override
-    public ProjectionDTO addProjection(ProjectionDTO projectionDTO) {
-        Projection projection = ProjectionDTO.toEntity(projectionDTO);
-        Projection projectionSaved= repository.save(projection);
-        return ProjectionDTO.fromEntity(projectionSaved);
-    }
+	
+	
+	    @Autowired
+	    private ProjectionRepository repository;
 
+	  
+
+	    @Override
+		public ProjectionDTO saveProjection(ProjectionDTO projectionDTO) {
+			 Projection projection = ProjectionDTO.toEntity(projectionDTO);
+		        Projection projectionSaved= repository.save(projection);
+		        return ProjectionDTO.fromEntity(projectionSaved);
+		}
+		
+	
+
+	
+
+    
     @Override
     public ProjectionDTO findById(Long id) {
         Optional<Projection> optionalProjection=repository.findById(id);
@@ -54,12 +67,16 @@ public class ProjectionServiceImplementation  implements IProjectionService{
             Projection updatedProjection = existingProjection.get();
             updatedProjection.setDateProjection(projectionDTO.getDateProjection());
             updatedProjection.setTarifProjection(projectionDTO.getTarifProjection());
+            updatedProjection.setTimeProjection(projectionDTO.getTimeProjection());
+
             // Mettre à jour d'autres propriétés de l'utilisateur si nécessaire
             Projection savedProjection = repository.save(updatedProjection);
 
             ProjectionDTO savedProjectionDTO = new ProjectionDTO();
             savedProjectionDTO.setDateProjection(savedProjection.getDateProjection());
             savedProjectionDTO.setTarifProjection(savedProjection.getTarifProjection());
+            savedProjectionDTO.setTimeProjection(savedProjection.getTimeProjection());
+
             // Copier d'autres propriétés de l'utilisateur si nécessaire
 
             return savedProjectionDTO;

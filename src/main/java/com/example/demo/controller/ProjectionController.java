@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,9 +26,8 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1/GestionProjecionByAdmin/auth")
+@RequestMapping("/api/v1/GestionProjectionByAdmin/auth")
 @RequiredArgsConstructor
-
 
 public class ProjectionController {
 
@@ -35,12 +36,18 @@ public class ProjectionController {
 	private IProjectionService service;
 	
 	
-	    
 	@PostMapping("/addProjection")
+    public ResponseEntity<ProjectionDTO> saveProjection(@RequestBody ProjectionDTO projectionDTO) {
+        ProjectionDTO projectionEnregistree = service.saveProjection(projectionDTO);
+        return new ResponseEntity<>(projectionEnregistree, HttpStatus.CREATED);
+    }
+	
+	    
+	/*@PostMapping("/addProjection")
     public ProjectionDTO save(@RequestBody ProjectionDTO projectionDto) {
 
         return service.addProjection(projectionDto);
-    }
+    }*/
 	@GetMapping("/findById/{id}")
 	    public ProjectionDTO findById(@PathVariable Long id) {
 	        return service.findById(id);
@@ -49,12 +56,12 @@ public class ProjectionController {
 	    public void deleteById(@PathVariable Long id) {
 	        service.deleteById(id);
 	    }
-	@GetMapping("findAll")
+	@GetMapping("/findAll")
 	    public List<ProjectionDTO> findAll() {
 	        return service.findAll();
 	    }
 	
-	   @PutMapping("updateProjection/{id}")
+	   @PutMapping("/updateProjection/{id}")
 	    public ProjectionDTO updateProjection(@PathVariable Long id, @RequestBody ProjectionDTO projectionDTO) {
 	        return service.updateProjection(id, projectionDTO);
 	    }
