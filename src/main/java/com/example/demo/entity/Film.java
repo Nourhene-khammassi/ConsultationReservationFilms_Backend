@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,6 +37,8 @@ public class Film {
 	private boolean actif; 
 	private String category;
 	private String image ; 
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date dateFilm;
 	//@ElementCollection // donne collection : tab associa
 	//private List<String> images ; 
 

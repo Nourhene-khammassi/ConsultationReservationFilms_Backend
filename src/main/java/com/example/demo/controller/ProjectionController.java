@@ -36,18 +36,18 @@ public class ProjectionController {
 	private IProjectionService service;
 	
 	
-	@PostMapping("/addProjection")
+	/*@PostMapping("/addProjection")
     public ResponseEntity<ProjectionDTO> saveProjection(@RequestBody ProjectionDTO projectionDTO) {
         ProjectionDTO projectionEnregistree = service.saveProjection(projectionDTO);
         return new ResponseEntity<>(projectionEnregistree, HttpStatus.CREATED);
-    }
+    }*/
 	
 	    
-	/*@PostMapping("/addProjection")
+	@PostMapping("/addProjection")
     public ProjectionDTO save(@RequestBody ProjectionDTO projectionDto) {
 
-        return service.addProjection(projectionDto);
-    }*/
+        return service.saveProjection(projectionDto);
+    }
 	@GetMapping("/findById/{id}")
 	    public ProjectionDTO findById(@PathVariable Long id) {
 	        return service.findById(id);

@@ -30,6 +30,7 @@ private  Long idSalle ;
   
   public static Salle toEntity (SalleDTO dto){ 
 	  return Salle.builder()
+			  .idSalle(dto.getIdSalle())
   .nbrPlaces(dto.getNbrPlaces())
   .nomSalle(dto.getNomSalle()) 
   .build(); }

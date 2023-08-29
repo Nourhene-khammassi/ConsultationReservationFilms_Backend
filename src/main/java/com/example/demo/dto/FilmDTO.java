@@ -1,12 +1,14 @@
 
   package com.example.demo.dto;
-  import java.util.List;
+  import java.util.Date;
+import java.util.List;
 
 import javax.persistence.ElementCollection;
 
 import com.example.demo.entity.Film;
-  
-  import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.AllArgsConstructor;
   import lombok.Builder; 
   import lombok.Getter;
   import lombok.NoArgsConstructor; 
@@ -31,6 +33,9 @@ import com.example.demo.entity.Film;
   private boolean actif; 
 	private String category;
 	private String image ; 
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	private Date dateFilm;
+
 	//@ElementCollection // donne collection : tab associaciation pour stocker plusieurs images
 	//private List<String> images ; 
 
@@ -45,6 +50,7 @@ import com.example.demo.entity.Film;
 			  .category(dto.getCategory())
 			  .image(dto.getImage())
 			  .actif(dto.isActif())
+			  .dateFilm(dto.getDateFilm())
 			  //.images(dto.getImages())
 			  .build(); }
   
@@ -58,6 +64,8 @@ import com.example.demo.entity.Film;
 			  .category(film.getCategory())
 			  .image(film.getImage())
 			  .actif(film.isActif())
+			  .dateFilm(film.getDateFilm())
+
 			  //.images(film.getImages())
 
 

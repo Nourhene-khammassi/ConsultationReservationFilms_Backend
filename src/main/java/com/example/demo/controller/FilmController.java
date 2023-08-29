@@ -72,6 +72,17 @@ public class FilmController {
 		public ResponseEntity<Resource> downloadFilmImage(@PathVariable String imageName, HttpServletRequest request) {
 			return this.imagestorage.downloadFilmImage(imageName, request);
 		}
+	   
+	   @GetMapping("/maxFilmId")
+	    public FilmDTO getMaxFilmId() {
+	        return servicefilm.getMaxFilmId();
+	    }
+	   
+	   
+	   @GetMapping("/aftertoday")
+	    public List<Film> getFilmsAfterToday() {
+	        return servicefilm.findFilmsAfterToday();
+	    }
 }
 
 

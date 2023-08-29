@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,7 +31,7 @@ public class Projection {
 	private String timeProjection;
 
 	
-	 @ManyToOne
+    @ManyToOne()
 	    @JoinColumn(name = "id_salle")
 	    private Salle salle;
 	 

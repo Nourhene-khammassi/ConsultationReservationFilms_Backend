@@ -152,7 +152,7 @@ public class AuthenticationService {
       }
     }
   }
-  
+  // les etapes : ajouter dans classe principal  PfaProjectApplication / ajouter abstract classeEntity 
   // methode pour ajouter un admin authomatiquement et l'enregistrer dans la base de donnée-------------- creer un super admin qui peut ajouter aprés des autres admins
   public void createadmine() {
 		//create role

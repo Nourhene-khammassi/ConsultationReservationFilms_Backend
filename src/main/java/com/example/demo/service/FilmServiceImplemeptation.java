@@ -64,6 +64,8 @@ public class FilmServiceImplemeptation implements IFilmService{
 	            updatedFilm.setNomFilm(filmDTO.getNomFilm());
 	            updatedFilm.setCategory(filmDTO.getCategory());
 	            updatedFilm.setImage(filmDTO.getImage());
+	            updatedFilm.setDateFilm(filmDTO.getDateFilm());
+
 	            //updatedFilm.isActif()()
 	            // Mettre à jour d'autres propriétés de l'utilisateur si nécessaire
 	            Film savedFilm = repositoryFilm.save(updatedFilm);
@@ -75,7 +77,7 @@ public class FilmServiceImplemeptation implements IFilmService{
 	            savedFilmDTO.setCategory(savedFilm.getCategory());
 	            savedFilmDTO.setImage(savedFilm.getImage());
 	            savedFilmDTO.setNomFilm(savedFilm.getNomFilm());
-
+	            savedFilmDTO.setDateFilm(savedFilm.getDateFilm());
 
 	            //updatedFilm.setIsactif(false);
 	            // Copier d'autres propriétés de l'utilisateur si nécessaire
@@ -124,5 +126,15 @@ public class FilmServiceImplemeptation implements IFilmService{
 			return null;
 		}
 	    
-	    
+		  public FilmDTO getMaxFilmId() {
+		        Long maxId = repositoryFilm.findMaxId();
+		        Film filmIdmax= repositoryFilm.getById(maxId);
+		        return FilmDTO.fromEntity(filmIdmax);
+
+		        
+		    }
+		  
+		  public List<Film> findFilmsAfterToday() {
+		        return repositoryFilm.findFilmsAfterToday();
+		    }
 }

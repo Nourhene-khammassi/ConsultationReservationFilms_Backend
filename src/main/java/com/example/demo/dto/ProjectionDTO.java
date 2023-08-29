@@ -40,7 +40,7 @@ import lombok.AllArgsConstructor;
 			   //mapping de 2 objects
 			   .salle(SalleDTO.toEntity(dto.getSalledto()))
 			   .film(FilmDTO.toEntity(dto.getFilmdto()))
-
+			   .timeProjection(dto.getTimeProjection())
 			   .build(); }
 			   
 			   public static ProjectionDTO fromEntity (Projection projection){ 
@@ -50,7 +50,7 @@ import lombok.AllArgsConstructor;
 			   .tarifProjection(projection.getTarifProjection()) 
 			   .salledto(SalleDTO.fromEntity(projection.getSalle()))
 			   .filmdto(FilmDTO.fromEntity(projection.getFilm()))
-
+			   .timeProjection(projection.getTimeProjection())
 			   .build(); } 
 			  
 }

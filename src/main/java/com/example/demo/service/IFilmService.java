@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.FilmDTO;
+import com.example.demo.entity.Film;
 
 public interface IFilmService {
 
@@ -17,4 +18,6 @@ public interface IFilmService {
     FilmDTO updateFilm(Long id);
     FilmDTO uploadImageFilm(Long filmId, MultipartFile image);
     ResponseEntity<FilmDTO> findByIdResponse(Long id);
+    FilmDTO getMaxFilmId();
+     List<Film> findFilmsAfterToday();
 }
