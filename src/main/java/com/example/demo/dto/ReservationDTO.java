@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import java.util.Date;
+import java.util.Set;
 
 import com.example.demo.entity.Reservation;
 import com.example.demo.entity.Salle;
@@ -24,6 +25,7 @@ public class ReservationDTO {
 	 private Long idReservation;
 	    private int nbPlaces;
 	    private String dateReservation;
+		private Set<String> places; 
 	
 
 public static Reservation toEntity (ReservationDTO dto){ 

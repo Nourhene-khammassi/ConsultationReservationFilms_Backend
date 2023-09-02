@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.management.loading.PrivateClassLoader;
@@ -11,18 +13,39 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.ReservationDTO;
 import com.example.demo.dto.SalleDTO;
+import com.example.demo.entity.Places;
 import com.example.demo.entity.Reservation;
 import com.example.demo.entity.Salle;
+import com.example.demo.repository.PlacesRepository;
 import com.example.demo.repository.ReservationRepository;
 @Service
 public class ReservationServiceImplementation implements IReservationService{
 @Autowired
  private ReservationRepository repository;
+@Autowired
+private PlacesRepository placeRepository;
 
 
 	@Override
 	public ReservationDTO addReservation(ReservationDTO reservationDTO) {
          Reservation reservation = ReservationDTO.toEntity(reservationDTO);
+   	  Set<String> strplaces= reservationDTO.getPlaces();
+      Set<Places> places = new HashSet<>();
+      
+      if (strplaces == null) {
+          Places reservationplace = placeRepository.findByMatricule("0")
+                  .orElseThrow(() -> new RuntimeException("Error: place is not found."));
+          places.add(reservationplace );
+      } else {
+          strplaces.forEach(place-> {
+
+                  Places pla= placeRepository.findByMatricule(place)
+                          .orElseThrow(() -> new RuntimeException("Error: Place is not found."));
+                  places.add(pla);
+
+          });
+      }
+
         Reservation reservationSaved= repository.save(reservation);
         return ReservationDTO.fromEntity(reservationSaved);
 	}

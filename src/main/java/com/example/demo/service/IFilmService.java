@@ -19,5 +19,6 @@ public interface IFilmService {
     FilmDTO uploadImageFilm(Long filmId, MultipartFile image);
     ResponseEntity<FilmDTO> findByIdResponse(Long id);
     FilmDTO getMaxFilmId();
-     List<Film> findFilmsAfterToday();
+    // List<Film> findFilmsAfterToday();
+     List<FilmDTO> findFilmsAfterToday() ;
 }

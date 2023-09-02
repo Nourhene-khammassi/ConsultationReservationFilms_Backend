@@ -1,12 +1,16 @@
 package com.example.demo.entity;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -37,4 +41,7 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "id_salle")
     private Salle salle;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+       private Set<Places> places = new HashSet<>();
 }

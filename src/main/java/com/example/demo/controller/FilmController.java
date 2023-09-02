@@ -78,11 +78,11 @@ public class FilmController {
 	        return servicefilm.getMaxFilmId();
 	    }
 	   
-	   
-	   @GetMapping("/aftertoday")
-	    public List<Film> getFilmsAfterToday() {
-	        return servicefilm.findFilmsAfterToday();
-	    }
+		
+		  @GetMapping("/aftertoday") 
+		  public List<FilmDTO> getFilmsAfterToday()
+		  { return servicefilm.findFilmsAfterToday(); }
+		 
 }
 
 

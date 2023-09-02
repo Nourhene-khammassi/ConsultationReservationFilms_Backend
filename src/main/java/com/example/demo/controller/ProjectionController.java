@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.ProjectionDTO;
+import com.example.demo.entity.Projection;
 import com.example.demo.service.IProjectionService;
 import com.example.demo.service.ProjectionServiceImplementation;
 
@@ -65,6 +66,12 @@ public class ProjectionController {
 	    public ProjectionDTO updateProjection(@PathVariable Long id, @RequestBody ProjectionDTO projectionDTO) {
 	        return service.updateProjection(id, projectionDTO);
 	    }
+	   
+		
+		  @GetMapping("/byfilm/{idFilm}") public List<Projection>
+		  getProjectionsByFilmId(@PathVariable Long idFilm) { return
+		  service.getProjectionsByFilmId(idFilm); }
+		 
 }
 
 

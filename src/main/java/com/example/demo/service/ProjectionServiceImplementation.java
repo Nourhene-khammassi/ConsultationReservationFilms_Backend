@@ -32,9 +32,6 @@ public class ProjectionServiceImplementation  implements IProjectionService{
 		        return ProjectionDTO.fromEntity(projectionSaved);
 		}
 		
-	
-
-	
 
     
     @Override
@@ -83,4 +80,11 @@ public class ProjectionServiceImplementation  implements IProjectionService{
         }
         return null; // Gérer le cas où l'utilisateur n'est pas trouvé
     }
+	
+	  public List<Projection> getProjectionsByFilmId(Long idFilm) {
+	  System.out.println(repository.findByFilmId(idFilm)); return
+	  repository.findByFilmId(idFilm);
+	  
+	  }
+	 
 }

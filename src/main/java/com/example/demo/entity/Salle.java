@@ -33,4 +33,6 @@ public class Salle {
 	   @OneToMany(mappedBy = "salle")
 	    private List<Projection> projections;
 
+	   @OneToMany
+	    private List<Places> places;
 }

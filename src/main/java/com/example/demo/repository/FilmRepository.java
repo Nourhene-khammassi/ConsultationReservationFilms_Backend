@@ -17,5 +17,6 @@ public interface FilmRepository  extends JpaRepository<Film, Long>{
 	 @Query(value = "SELECT * FROM film WHERE date_film > CURDATE()", nativeQuery = true)
 	 List<Film> findFilmsAfterToday();
 
+
 	
 }

@@ -125,7 +125,7 @@ public class FilmServiceImplemeptation implements IFilmService{
 			// TODO Auto-generated method stub
 			return null;
 		}
-	    
+		@Override
 		  public FilmDTO getMaxFilmId() {
 		        Long maxId = repositoryFilm.findMaxId();
 		        Film filmIdmax= repositoryFilm.getById(maxId);
@@ -133,8 +133,21 @@ public class FilmServiceImplemeptation implements IFilmService{
 
 		        
 		    }
-		  
-		  public List<Film> findFilmsAfterToday() {
-		        return repositoryFilm.findFilmsAfterToday();
-		    }
+			/*
+			 * @Override public List<FilmDTO> findFilmsAfterToday() { List<Film>
+			 * filmAfterToday= repositoryFilm.findFilmsAfterToday(); return List<FilmDTO>.
+			 * fromEntity(filmAfterToday); }
+			 */
+		
+		@Override
+		public List<FilmDTO> findFilmsAfterToday() { 
+		    List<Film> filmAfterToday = repositoryFilm.findFilmsAfterToday();
+
+		    List<FilmDTO> filmDTOs = filmAfterToday.stream()
+		        .map(FilmDTO::fromEntity) // Utilisez la méthode de conversion de Film à FilmDTO
+		        .collect(Collectors.toList());
+
+		    return filmDTOs;
+		}
+			 
 }
