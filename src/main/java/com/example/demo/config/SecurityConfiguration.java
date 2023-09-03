@@ -38,6 +38,7 @@ public class SecurityConfiguration {
         http.authorizeRequests().antMatchers("/**/auth/**",
         		"/**/role/**",
         		
+        		"/**/reservationsFilms/**",
                 // swagger
                 "/v3/api-docs",
                 "/v3/api-docs/**",

@@ -6,6 +6,7 @@
 import com.example.demo.entity.Film;
 import com.example.demo.entity.Projection;
 import com.example.demo.entity.Salle;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
   
@@ -26,6 +27,7 @@ import lombok.AllArgsConstructor;
   @Builder
   public class ProjectionDTO {
 	  private  Long idProjection ;
+		@JsonFormat(pattern = "yyyy-MM-dd")
 		private Date dateProjection; 
 		private String tarifProjection ;
 		   private SalleDTO salledto; // ID de la salle associée
@@ -35,6 +37,8 @@ import lombok.AllArgsConstructor;
   
 		 public static Projection toEntity (ProjectionDTO dto){
 			 return Projection.builder()
+			  .idProjection(dto.getIdProjection()) 
+
 			   .dateProjection(dto.getDateProjection())
 			   .tarifProjection(dto.getTarifProjection())
 			   //mapping de 2 objects

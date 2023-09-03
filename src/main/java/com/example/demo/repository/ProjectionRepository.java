@@ -15,4 +15,7 @@ public interface ProjectionRepository extends JpaRepository<Projection, Long> {
 	@Query("SELECT p FROM Projection p WHERE p.film.idFilm = :idFilm")
 	  List<Projection> findByFilmId(@Param("idFilm") Long idFilm);
 	  
+	
+	
+	
 	 }

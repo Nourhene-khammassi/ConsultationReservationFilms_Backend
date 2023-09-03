@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +28,7 @@ public class Projection {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private  Long idProjection ;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dateProjection; 
 	private String tarifProjection ;
 	private String timeProjection;
